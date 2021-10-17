@@ -236,6 +236,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb83576ed22a7944a8b80bdea94fb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cc: 1419
+  weight: 3.5
+  brand: "\u8CD3\u58EB"
+  hasSkyWindow: 1
+  color1: {r: 0, g: 0, b: 0, a: 0}
+  colorRed: {r: 1, g: 0, b: 0, a: 1}
+  colorCustom: {r: 0, g: 0, b: 1, a: 1}
+  colorCustomAlpge: {r: 0, g: 1, b: 0, a: 0.3}
+  v2: {x: 0, y: 0}
+  v2One: {x: 1, y: 1}
+  v2Up: {x: 0, y: 1}
+  v2Custom: {x: 7, y: 9}
+  v3Custom: {x: 1, y: 2, z: 3}
+  v4Custom: {x: 1, y: 2, z: 3, w: 4}
+  kc: 0
+  kcW: 119
+  kcML: 323
+  carBox: {fileID: 729536678}
+  carOil: {fileID: 1795030424}
+  traBox: {fileID: 0}
+  sprBox: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!212 &729536680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -318,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1795030425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +353,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb83576ed22a7944a8b80bdea94fb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cc: 2000
+  weight: 3.5
+  brand: "\u8CD3\u58EB"
+  hasSkyWindow: 1
+  color1: {r: 0, g: 0, b: 0, a: 0}
+  colorRed: {r: 1, g: 0, b: 0, a: 1}
+  colorCustom: {r: 0, g: 0, b: 1, a: 1}
+  colorCustomAlpge: {r: 0, g: 1, b: 0, a: 0.3}
+  v2: {x: 0, y: 0}
+  v2One: {x: 1, y: 1}
+  v2Up: {x: 0, y: 1}
+  v2Custom: {x: 7, y: 9}
+  v3Custom: {x: 1, y: 2, z: 3}
+  v4Custom: {x: 1, y: 2, z: 3, w: 4}
+  kc: 0
+  kcW: 119
+  kcML: 323
+  carBox: {fileID: 729536678}
+  carOil: {fileID: 1795030424}
+  traBox: {fileID: 0}
+  sprBox: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!212 &1795030426
 SpriteRenderer:
   m_ObjectHideFlags: 0
