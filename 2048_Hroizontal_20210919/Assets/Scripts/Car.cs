@@ -41,5 +41,41 @@ public class Car : MonoBehaviour
     //座標 Vector
     //Vecter 2 - 4
     public Vector2 v2;
+    public Vector2 v2One = Vector2.one;
+    public Vector2 v2Up = Vector2.up;
+    public Vector2 v2Custom = new Vector2(7, 9);
+    public Vector3 v3Custom = new Vector3(1,2,3);
+    public Vector4 v4Custom = new Vector4(1, 2, 3, 4);
+    //按鍵 KeyCode
+    public KeyCode kc;
+    public KeyCode kcW = KeyCode.W;
+    public KeyCode kcML = KeyCode.Mouse0;
+
+    //遊戲物件 GameObject 不須指定預設值
+    public GameObject carBox;
+    public GameObject carOil;
+    //元件 component  不須指定預設值
+    public Transform traBox;
+    public SpriteRenderer sprBox;
+    public Camera cam;
+
+    #endregion
+    #region 存取欄位資料 Set Get
+
+    //程式入口 : 事件
+    //開始事件 : 播放遊戲時執行一次 , 初始設定
+    private void Start()
+    {
+        print("哈囉 , 沃德 :D");
+
+        //取得 Get 欄位資料 *預設值以屬性面板為主(Inspector)
+        //語法:
+        //欄位名稱
+        print("cc 數 :" + cc);
+        print(weight);
+
+        //存放 Set 欄位資料
+        brand = "BMW";
+    }
     #endregion
 }
