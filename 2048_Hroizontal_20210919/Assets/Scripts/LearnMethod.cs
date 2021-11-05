@@ -26,6 +26,37 @@ public class LearnMethod : MonoBehaviour
         //方法名稱();
         Test();
         Test();
+        Drive90();  //對照組 土方法
+        Drive100(); //對照組 土方法
+        //呼叫方法 : 引數
+        Drive(70);  //speed=70 傳入Drive //整理組 好方法
+        Drive(200); //整理組 好方法
     }
-#endregion
+    #endregion
+    #region 對照組 土方法
+    // 企劃需求
+    // 播放音效
+    // 汽車可以加速，時數為 90
+    // 汽車可以加速，時數為 100
+    public void Drive90()
+    {
+        print("開車，時速 :" + 90);
+        print("音效");
+    }
+    public void Drive100()
+    {
+        print("開車，時速 :" + 100);
+        print("音效");
+    }
+    #endregion
+
+    #region  參數 : 資料類型 參數名稱，好方法
+    //定義方法
+    //參數 : 資料類型 參數名稱
+    public void Drive(int speed)
+    {
+        print("開車，時速 :" + speed);
+        print("音效");
+    }
+    #endregion
 }
