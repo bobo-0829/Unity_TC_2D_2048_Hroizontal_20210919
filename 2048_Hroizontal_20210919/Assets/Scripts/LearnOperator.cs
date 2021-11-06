@@ -77,6 +77,7 @@ public class LearnOperator : MonoBehaviour
         print(!(a > b));        //F
         print(!(true && true)); //F
         #endregion
+
     }
 
 }
