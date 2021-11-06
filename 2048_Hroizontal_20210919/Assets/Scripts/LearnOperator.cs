@@ -43,7 +43,7 @@ public class LearnOperator : MonoBehaviour
         print("hp 結果 :" + hp);
         #endregion
 
-        #region
+        #region 比較運算子
         //大於 小於 大等於 小等於 等於 不等於
         //  <   >    >=     <=   ==   !=
         // 比較兩個值，並得到布林值結果
@@ -54,6 +54,23 @@ public class LearnOperator : MonoBehaviour
         print("a <= b " + (a <= b));   // f
         print("a == b " + (a == b));   // f
         print("a != b " + (a != b));   // t
+        #endregion
+
+        #region 邏輯運算子
+        // 並且、或者、顛倒
+        // &&  || !
+        //並且、或者
+        // 比較兩個布林值，並得到布林值結果
+        print("t && t " + (true && true));   //t
+        print("f && t " + (false && true));  //f
+        print("t && f " + (true && false));  //f
+        print("f && f " + (false && false)); //f
+         // 或者 : 只要有一個 t 結果就是 t
+        print(" t || t " + (true || true));   //t
+        print(" f || t " + (false || true));  //t
+        print(" t || f " + (true || false));  //t
+        print(" f || f " + (false || false)); //f
+        //Alt + Shift + > 快速選取
         #endregion
     }
 
