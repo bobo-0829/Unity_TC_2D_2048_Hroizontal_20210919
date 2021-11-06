@@ -33,6 +33,17 @@ public class LearnMethod : MonoBehaviour
         Drive(70, "轟轟轟");  //speed=70 傳入Drive //整理組 好方法
         Drive(200, "咻咻咻"); //整理組 好方法
         Drive(300);
+        // 時速50，預設值，石頭
+        //指定預設值參數語法 參數名稱 冒號 值
+        Drive(50, effect: "石頭");
+
+        int t = Ten();
+        print("傳回方法 :" + t);
+
+        print("不使用變數儲存傳回值:" + Ten());
+
+        int damage = Damage(90, 30);
+        print("90 攻擊力與 30 防禦力的傷害 :" + damage);
     }
     #endregion
     #region 對照組 土方法
@@ -54,12 +65,34 @@ public class LearnMethod : MonoBehaviour
 
     #region  參數 : 資料類型 參數名稱，好方法
     //定義方法
-    //參數 : 資料類型 參數名稱 (指定 預設值)
+    //參數 : 資料類型 參數名稱 (指定 預設值) *寫在()最右邊
     //參數1，參數2，.....，參數n
-    public void Drive(int speed,string sound = "咻咻咻")
+    public void Drive(int speed,string sound = "咻咻咻",string effect="灰塵")
     {
         print("開車，時速 :" + speed);
         print("音效 : " + sound);
+        print("特效 : " + effect);
     }
     #endregion
+
+    #region 傳回類型方法
+    //有傳回類型方法必須使用 return
+    public int Ten()
+    {
+        return 10;
+    }
+    #endregion
+
+    //攻擊力 - 防禦力 = 傷害值
+    //90 - 30 = 60
+    /// <summary>
+    /// 計算傷害值，攻擊力-防禦力=傷害值
+    /// </summary>
+    /// <param name="attack"></param>
+    /// <param name="defence"></param>
+    /// <returns></returns>
+    public int Damage(int attack,int defence)
+    {
+        return attack - defence;
+    }
 }
