@@ -71,6 +71,11 @@ public class LearnOperator : MonoBehaviour
         print(" t || f " + (true || false));  //t
         print(" f || f " + (false || false)); //f
         //Alt + Shift + > 快速選取
+
+        //顛倒 : 只能加在布林值前面
+        print(!true);           //F
+        print(!(a > b));        //F
+        print(!(true && true)); //F
         #endregion
     }
 
