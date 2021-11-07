@@ -15,7 +15,7 @@ public class LearnLoop : MonoBehaviour
 
         //迴圈 :重複執行
         //while 迴圈語法 :
-        //while (布林值) { 當布林值 等於 true 會執行 持續到布林值為 false 程式內容 }
+        //while (布林值) { 當布林值 等於 true 會執行 持續直到布林值為 false 程式內容 }
         int number = 1;
 
         //當數字 小於 6 會執行...
@@ -23,6 +23,12 @@ public class LearnLoop : MonoBehaviour
         {
             print("while 迴圈數字 :" + number);
             number++;
+        }
+
+        for(int i = 1; i < 6; i++)
+        {
+            print("for 迴圈數字 :" + i);
+            
         }
 
     }
