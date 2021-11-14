@@ -29,4 +29,10 @@ public class LearnPropertyNonStatic : MonoBehaviour
 
 
     }
+    private void Update()
+    {
+        //呼叫非靜態方法
+        //欄位名稱.非靜態方法名稱(對應的引數)
+        tra.Translate(1, 0, 0);
+    }
 }

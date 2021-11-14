@@ -2587,6 +2587,8 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 179
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 2.4013e-41, g: 2.4013e-41, b: 2.4013e-41, a: 2.4013e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2647,8 +2649,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 710690127}
     m_ColliderPaths:
-    - - X: -80000000
-        Y: 10000000
+    - - X: -69999900
+        Y: 10000041
+      - X: -69999959
+        Y: 10000100
+      - X: -80000041
+        Y: 10000100
+      - X: -80000100
+        Y: 10000041
+      - X: -80000100
+        Y: -41
+      - X: -80000041
+        Y: -100
+      - X: -80000000
+        Y: -100
       - X: -80000000
         Y: -89687504
       - X: -79687504
@@ -2665,6 +2679,8 @@ CompositeCollider2D:
         Y: 4687500
       - X: 70000000
         Y: 10000000
+      - X: -69999900
+        Y: 10000000
   m_CompositePaths:
     m_Paths:
     - - {x: 9.99997, y: -9}
@@ -2673,7 +2689,7 @@ CompositeCollider2D:
       - {x: 8.999833, y: 0.0078126}
       - {x: 8.000002, y: 0.4687494}
       - {x: 6.999994, y: 1}
-      - {x: -8, y: 0.99997073}
+      - {x: -8.00001, y: 0.9999748}
       - {x: -7.999992, y: -8.968759}
       - {x: -7.9687395, y: -9}
   m_VertexDistance: 0.0005
