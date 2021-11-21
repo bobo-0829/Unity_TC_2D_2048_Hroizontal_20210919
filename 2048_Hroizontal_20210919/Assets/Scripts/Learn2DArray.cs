@@ -54,6 +54,24 @@ public class Learn2DArray : MonoBehaviour
             from int n in numbers
             where n >= 10
             select n;
+
+        print("符合 >=10 資料有幾筆 : " + numberGratgerTen.Count());
+
+        for (int i = 0; i < numberGratgerTen.Count(); i++)
+        {
+                print(">=10 的資料為 : " + numberGratgerTen.ToArray()[i]);
+        }
+
+        //scores 不及格分數有哪些
+        var noPass =
+            from int no in scores
+            where no < 60
+            select no;
+
+        for (int i = 0; i < noPass.Count(); i++)
+        {
+            print("不及格分數 : " + noPass.ToArray()[i]);
+        }
         #endregion
     }
 }

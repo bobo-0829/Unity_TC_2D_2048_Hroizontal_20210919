@@ -1,5 +1,5 @@
-
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// 2048系統
@@ -13,6 +13,10 @@ public class System2048 : MonoBehaviour
 {
     [Header("空白區塊")]
     public Transform[] blocksEmpty;
+    [Header("數字區塊")]
+    public GameObject goNumberBlock;
+    [Header("畫布2048")]
+    public Transform traCanvas2048;
 
     /// <summary>
     /// 所有區塊
@@ -39,6 +43,7 @@ public class System2048 : MonoBehaviour
             }
         }
         PrintBlockData();
+        CreateRandomNumberBlock();
         CreateRandomNumberBlock();
     }
 
@@ -67,7 +72,29 @@ public class System2048 : MonoBehaviour
     /// </summary>
     private void CreateRandomNumberBlock()
     {
+        var equalZero =
+            from BlockData data in blocks
+            where data.number == 0
+            select data;
 
+        print("為零的資料有幾筆" + equalZero.Count());
+
+        int randomIndex = Random.Range(0, equalZero.Count());
+        print("隨機編號 : " + randomIndex);
+
+        //選出隨機區塊 編號
+        BlockData select = equalZero.ToArray()[randomIndex];
+        BlockData dataRandom = blocks[equalZero.ToArray()[randomIndex].v2Index.x, equalZero.ToArray()[randomIndex].v2Index.y];
+        //將數字 2  輸入到隨機區塊內
+        dataRandom.number = 2;
+
+        PrintBlockData();
+        //實例化-生成(物件，父物件)
+        GameObject tempBlock =  Instantiate(goNumberBlock, traCanvas2048);
+        //生成區塊 指定座標
+        tempBlock.transform.position = dataRandom.v2Position;
+        //儲存 生成區塊　資料
+        dataRandom.goBlock = tempBlock;
     }
 }
 
