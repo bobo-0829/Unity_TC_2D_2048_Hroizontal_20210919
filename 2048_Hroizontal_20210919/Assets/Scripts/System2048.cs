@@ -11,6 +11,9 @@ using UnityEngine;
 /// </summary>
 public class System2048 : MonoBehaviour
 {
+    [Header("空白區塊")]
+    public Transform[] blocksEmpty;
+
     /// <summary>
     /// 所有區塊
     /// </summary>
@@ -28,34 +31,50 @@ public class System2048 : MonoBehaviour
     {
         for (int i = 0; i < blocks.GetLongLength(0); i++)
         {
-            for (int j = 0;  j < blocks.GetLongLength(1);  j++)
+            for (int j = 0; j < blocks.GetLongLength(1); j++)
             {
                 blocks[i, j] = new BlockData();
+                blocks[i, j].v2Index = new Vector2Int(i, j);
             }
         }
+        PrintBlockData();
+    }
+    private void PrintBlockData()
+    {
+        string result = "";
+        for (int i = 0; i < blocks.GetLongLength(0); i++)
+        {
+            for (int j = 0; j < blocks.GetLongLength(1); j++)
+            {
+                result += "編號(" + blocks[i, j].v2Index + ")" + "<color=red> 數字 : " + blocks[i, j].number + "</color>|";
+            }
+            result += "\n";
+        }
+        print(result);
     }
 }
 
-/// <summary>
-/// 區塊資料
-/// 每個區塊遊戲製作、座標、編號、數字
-/// </summary>
-public class BlockData
-{
     /// <summary>
-    /// 區塊內的數字物件
+    /// 區塊資料
+    /// 每個區塊遊戲製作、座標、編號、數字
     /// </summary>
-    public GameObject goBlock;
-    ///<summary>
-    ///區塊座標
-    ///</summary>
-    public Vector2 v2Position;
-    /// <summary>
-    /// 區塊編號:二維陣列內的編號
-    /// </summary>
-    public Vector2Int v2Index;
-    /// <summary>
-    /// 區塊數字 : 預設維0，或者2、4、6、8.......2048
-    /// </summary>
-    public int number;
-}
+    public class BlockData
+    {
+        /// <summary>
+        /// 區塊內的數字物件
+        /// </summary>
+        public GameObject goBlock;
+        ///<summary>
+        ///區塊座標
+        ///</summary>
+        public Vector2 v2Position;
+        /// <summary>
+        /// 區塊編號:二維陣列內的編號
+        /// </summary>
+        public Vector2Int v2Index;
+        /// <summary>
+        /// 區塊數字 : 預設維0，或者2、4、6、8.......2048
+        /// </summary>
+        public int number;
+    }
+
