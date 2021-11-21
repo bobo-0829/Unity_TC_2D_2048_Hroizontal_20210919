@@ -18,6 +18,10 @@ public class System2048 : MonoBehaviour
     [Header("畫布2048")]
     public Transform traCanvas2048;
 
+    // 私人欄位顯示
+    [SerializeField]
+    private Direction direction;
+
     /// <summary>
     /// 所有區塊
     /// </summary>
@@ -57,7 +61,7 @@ public class System2048 : MonoBehaviour
         {
             for (int j = 0; j < blocks.GetLongLength(1); j++)
             {
-                result += "編號" + blocks[i, j].v2Index + ")" + "<color=red> 數字 : " + blocks[i, j].number + "</color>"+blocks[i,j].v2Position+"|";
+                result += "編號" + blocks[i, j].v2Index + ")" + "<color=red> 數字 : " + blocks[i, j].number + "</color><color=yellow>" + blocks[i,j].goBlock+ "</color> |";
             }
             result += "\n";
         }
@@ -121,4 +125,12 @@ public class System2048 : MonoBehaviour
         /// </summary>
         public int number;
     }
+///<summary>
+/// 方向列舉 :無、右、左、上、下
+///</summary>
+public enum Direction
+{
+    None ,Right ,Left ,Up ,Down
+}
+
 
