@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;//Linq Query 查詢語言，資料查詢
 
 /// <summary>
 ///  認識二維陣列
@@ -7,7 +8,7 @@ public class Learn2DArray : MonoBehaviour
 {
     //一維陣列
     public int[] numbers = { 1, 7, 9, 10, 50 };
-    //二維陣列 : 不會顯示 = 裝套件 Odin 自己寫
+    //二維陣列 : 不會顯示 = 裝套件 Odin 自己寫 Editor
     public int[,] blocks = { { 2, 4 }, { 6, 8 } };
 
     public string[,] objects = new string[4, 6];
@@ -16,6 +17,7 @@ public class Learn2DArray : MonoBehaviour
 
     private void Start()
     {
+        #region 存取
         //一維陣列存取
         numbers[4] = 99;
         print("一維陣列第五筆資料 :" + numbers[4]);
@@ -39,5 +41,19 @@ public class Learn2DArray : MonoBehaviour
             result += "\n";
         }
         print(result);
+        #endregion
+
+        #region 資料搜尋
+
+        //搜尋 numbers 一維陣列內大於等於 10 的資料
+        //var 無類型資料型態
+        //from 資料A in 陣列        - 從陣列搜尋資料並保存為 資料A
+        //where 資料A 條件          -判斷 資料A 是否符合條件
+        //select 資料A;            -選取 符合條件的 資料A
+        var numberGratgerTen =
+            from int n in numbers
+            where n >= 10
+            select n;
+        #endregion
     }
 }

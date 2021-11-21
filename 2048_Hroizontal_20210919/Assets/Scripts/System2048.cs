@@ -35,10 +35,16 @@ public class System2048 : MonoBehaviour
             {
                 blocks[i, j] = new BlockData();
                 blocks[i, j].v2Index = new Vector2Int(i, j);
+                blocks[i, j].v2Position = blocksEmpty[i * blocks.GetLongLength(1) + j].position;
             }
         }
         PrintBlockData();
+        CreateRandomNumberBlock();
     }
+
+    /// <summary>
+    /// 輸出區塊二維陣列資料
+    /// </summary>
     private void PrintBlockData()
     {
         string result = "";
@@ -46,11 +52,22 @@ public class System2048 : MonoBehaviour
         {
             for (int j = 0; j < blocks.GetLongLength(1); j++)
             {
-                result += "編號(" + blocks[i, j].v2Index + ")" + "<color=red> 數字 : " + blocks[i, j].number + "</color>|";
+                result += "編號" + blocks[i, j].v2Index + ")" + "<color=red> 數字 : " + blocks[i, j].number + "</color>"+blocks[i,j].v2Position+"|";
             }
             result += "\n";
         }
         print(result);
+    }
+
+    /// <summary>
+    /// 建立隨機數字區塊
+    /// 判斷所有區塊內有沒有數字，數字為0
+    /// 隨機挑選一個
+    /// 生成數字放到該區塊內
+    /// </summary>
+    private void CreateRandomNumberBlock()
+    {
+
     }
 }
 
