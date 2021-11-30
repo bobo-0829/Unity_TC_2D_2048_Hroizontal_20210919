@@ -11,27 +11,52 @@ using System.Linq;
 /// </summary>
 public class System2048 : MonoBehaviour
 {
+    #region 欄位:公開
     [Header("空白區塊")]
     public Transform[] blocksEmpty;
     [Header("數字區塊")]
     public GameObject goNumberBlock;
     [Header("畫布2048")]
     public Transform traCanvas2048;
+    #endregion
 
-    // 私人欄位顯示
+    #region 欄位:私人
+    // 私人欄位顯示在屬性面板上
     [SerializeField]
     private Direction direction;
 
     /// <summary>
-    /// 所有區塊
+    /// 所有區塊資料
     /// </summary>
-    public BlockData[,] blocks = new BlockData[4, 4];
+    private BlockData[,] blocks = new BlockData[4, 4];
 
+    /// <summary>
+    /// 按下座標
+    /// </summary>
+    private Vector3 posDown;
+    /// <summary>
+    /// 放下座標
+    /// </summary>
+    private Vector3 posUp;
+    /// <summary>
+    /// 是否按下左鍵
+    /// </summary>
+    private bool isClickMouse;
+    #endregion
+
+    #region 事件
     private void Start()
     {
         Initialized();
     }
 
+    private void Update()
+    {
+        CheckDirection();
+    }
+    #endregion
+
+    #region 方法:私人
     /// <summary>
     /// 初始化資料
     /// </summary>
@@ -100,13 +125,53 @@ public class System2048 : MonoBehaviour
         //儲存 生成區塊　資料
         dataRandom.goBlock = tempBlock;
     }
-}
 
     /// <summary>
-    /// 區塊資料
-    /// 每個區塊遊戲製作、座標、編號、數字
+    /// 檢查方向
     /// </summary>
-    public class BlockData
+    private void CheckDirection()
+    {
+        #region 鍵盤
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            direction = Direction.Up;
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            direction = Direction.Down;
+        }
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            direction = Direction.Left;
+        }
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            direction = Direction.Right;
+        }
+        #endregion
+
+        #region 滑鼠與觸控
+        if (!isClickMouse && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            print("按下左鍵");
+            isClickMouse = true;
+        }
+        else if (isClickMouse && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            print("方開左鍵");
+            isClickMouse = false;
+        }
+        #endregion
+    }
+    #endregion
+
+}
+
+/// <summary>
+/// 區塊資料
+/// 每個區塊遊戲製作、座標、編號、數字
+/// </summary>
+public class BlockData
     {
         /// <summary>
         /// 區塊內的數字物件
