@@ -86,7 +86,13 @@ public class System2048 : MonoBehaviour
         {
             for (int j = 0; j < blocks.GetLongLength(1); j++)
             {
-                result += "編號" + blocks[i, j].v2Index + ")" + "<color=red> 數字 : " + blocks[i, j].number + "</color><color=yellow>" + blocks[i,j].goBlock+ "</color> |";
+                // 編號、數字與座標
+                // result += "編號" + blocks[i, j].v2Index + " <color=red>數字 : " blocks[i, j].number + "</color> <color=yellow>" + block[i, j].v2Postion + "</color> |";
+                // 三元運算子
+                // 語法 : 布林值 ? 值 A : 值 B;
+                // 當布林值為true 結果為 值 A
+                // 當布林值為false 結果為 值 B
+                result += "編號" + blocks[i, j].v2Index + ")" + "<color=red> 數字 : " + blocks[i, j].number + "</color><color=yellow>" + (blocks[i,j].goBlock ? "有" : "一")+ "</color> |";
             }
             result += "\n";
         }
@@ -117,13 +123,14 @@ public class System2048 : MonoBehaviour
         //將數字 2  輸入到隨機區塊內
         dataRandom.number = 2;
 
-        PrintBlockData();
         //實例化-生成(物件，父物件)
         GameObject tempBlock =  Instantiate(goNumberBlock, traCanvas2048);
         //生成區塊 指定座標
         tempBlock.transform.position = dataRandom.v2Position;
         //儲存 生成區塊　資料
         dataRandom.goBlock = tempBlock;
+
+        PrintBlockData();
     }
 
     /// <summary>
@@ -135,18 +142,22 @@ public class System2048 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             direction = Direction.Up;
+            CheckAndMoveBlock();
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             direction = Direction.Down;
+            CheckAndMoveBlock();
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             direction = Direction.Left;
+            CheckAndMoveBlock();
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             direction = Direction.Right;
+            CheckAndMoveBlock();
         }
         #endregion
 
@@ -155,36 +166,67 @@ public class System2048 : MonoBehaviour
         {
             isClickMouse = true;
             posDown = Input.mousePosition;
-            print("按下座標 :" + posDown);
+            //print("按下座標 :" + posDown);
         }
         else if (isClickMouse && Input.GetKeyUp(KeyCode.Mouse0))
         {
 
             isClickMouse = false;
             posUp = Input.mousePosition;
-            print("放開座標 :" + posUp);
+            //print("放開座標 :" + posUp);
 
             //1. 計算向量值 方開座標 - 按下座標
             Vector3 directionValue = posUp - posDown;
-            print("向量值 :" + directionValue);
+            //print("向量值 :" + directionValue);
             //2. 轉換成 0 ~ 1 值
-            print("轉換後值 :" + directionValue.normalized);
+            //print("轉換後值 :" + directionValue.normalized);
 
             // 方向 x 與 y 取絕對值
-            float xAbs = Mathf.Abs(directionValue.x);
-            float yAbs = Mathf.Abs(directionValue.y);
+            float xAbs = Mathf.Abs(directionValue.normalized.x);
+            float yAbs = Mathf.Abs(directionValue.normalized.y);
             // x > Y 水平方向
             if (xAbs > yAbs)
             {
-                print("水平方向");
+                if (directionValue.normalized.x > 0) direction = Direction.Right;
+                else direction = Direction.Left;
+                //print("水平方向");
+                CheckAndMoveBlock();
             }
             // Y > X 垂直方向
             else if (yAbs > xAbs)
             {
-                print("垂直方向");
+               // print("垂直方向");
+                if (directionValue.normalized.y > 0) direction = Direction.Up;
+                else direction = Direction.Down;
+                CheckAndMoveBlock();
             }
         }
         #endregion
+    }
+
+    /// <summary>
+    /// 檢查方向
+    /// </summary>
+    private void CheckAndMoveBlock()
+    {
+        print("目前方向 :" + direction);
+
+        switch (direction)
+        {
+            case Direction.None:
+                break;
+            case Direction.Right:
+                break;
+            case Direction.Left:
+                print("方向為左邊");
+                break;
+            case Direction.Up:
+                break;
+            case Direction.Down:
+                break;
+            default:
+                break;
+        }
     }
     #endregion
 
