@@ -153,13 +153,36 @@ public class System2048 : MonoBehaviour
         #region 滑鼠與觸控
         if (!isClickMouse && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            print("按下左鍵");
             isClickMouse = true;
+            posDown = Input.mousePosition;
+            print("按下座標 :" + posDown);
         }
         else if (isClickMouse && Input.GetKeyUp(KeyCode.Mouse0))
         {
-            print("方開左鍵");
+
             isClickMouse = false;
+            posUp = Input.mousePosition;
+            print("放開座標 :" + posUp);
+
+            //1. 計算向量值 方開座標 - 按下座標
+            Vector3 directionValue = posUp - posDown;
+            print("向量值 :" + directionValue);
+            //2. 轉換成 0 ~ 1 值
+            print("轉換後值 :" + directionValue.normalized);
+
+            // 方向 x 與 y 取絕對值
+            float xAbs = Mathf.Abs(directionValue.x);
+            float yAbs = Mathf.Abs(directionValue.y);
+            // x > Y 水平方向
+            if (xAbs > yAbs)
+            {
+                print("水平方向");
+            }
+            // Y > X 垂直方向
+            else if (yAbs > xAbs)
+            {
+                print("垂直方向");
+            }
         }
         #endregion
     }
