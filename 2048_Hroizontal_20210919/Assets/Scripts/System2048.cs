@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
+
 
 /// <summary>
 /// 2048系統
@@ -28,7 +30,7 @@ public class System2048 : MonoBehaviour
     /// <summary>
     /// 所有區塊資料
     /// </summary>
-    private BlockData[,] blocks = new BlockData[4, 4];
+    private BlockData[,] blocks = new BlockData[1, 4];
 
     /// <summary>
     /// 按下座標
@@ -218,7 +220,64 @@ public class System2048 : MonoBehaviour
             case Direction.Right:
                 break;
             case Direction.Left:
-                print("方向為左邊");
+
+                for (int i = 0; i < blocks.GetLength(0); i++)
+                {
+                    for (int j = 0; j < blocks.GetLength(1); j++)
+                    {
+                        BlockData blockOriginal = new BlockData();      //原始有數字的區塊
+                        BlockData blockCheck = new BlockData();         //檢查旁邊的區塊
+                        bool canMove = false;                           //是否可以移動區塊
+                        bool sameNumber = false;                        //是否相同數字
+                        blockOriginal = blocks[i, j];
+
+                        //如果 該區塊的數字 為零 就 繼續 (跳過此迴圈執行下個迴圈)
+                        if (blocks[i, j].number == 0) continue;
+
+                        for (int k = j-1; k >= 0 ; k--)
+                        {
+                            print("檢查次數 :"+k);
+
+                            if (blocks[i,k].number == 0)
+                            {
+                                blockCheck = blocks[i, k];
+                                canMove = true;
+                            }
+                            else if (blocks[i,k].number == blockOriginal.number)
+                            {
+                                blockCheck = blocks[i, k];
+                                canMove = true;
+                                sameNumber = true;
+                            }
+                        }
+                        // 將原本的物件移動到檢查數字為零的區塊位置
+                        // 將原本數字歸零，檢查數字補上
+                        // 將原本的物件清空，檢查物件補上
+                        blockOriginal.goBlock.transform.position = blockCheck.v2Position;
+
+                        if (sameNumber)
+                        {
+                            #region 數字的疊加
+                            int number = blockCheck.number * 2; //2*2..4*4...8*8
+                            blockCheck.number = number;     //數字跟新
+
+                            Destroy(blockOriginal.goBlock); //刪除物件，刪除生成出來多餘的區塊
+                            //跟新子物件，名字叫做"數字"的物件
+                            blockCheck.goBlock.transform.Find("數字").GetComponent<Text>().text = number.ToString();
+                            #endregion
+                        }
+                        else
+                        {
+                            blockCheck.number = blockOriginal.number;
+                            blockCheck.goBlock = blockOriginal.goBlock;
+                        }
+                        //歸零，清除
+                        blockOriginal.number = 0;
+                        blockOriginal.goBlock = null;
+                    }
+                }
+                PrintBlockData();
+
                 break;
             case Direction.Up:
                 break;
