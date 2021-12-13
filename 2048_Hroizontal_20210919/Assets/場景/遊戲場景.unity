@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 57245465}
   - component: {fileID: 57245464}
   - component: {fileID: 57245466}
+  - component: {fileID: 57245467}
   m_Layer: 0
   m_Name: "\u53F2\u840A\u59C6"
   m_TagString: Untagged
@@ -411,6 +412,23 @@ MonoBehaviour:
   goTarget: {fileID: 1290334463}
   positionSpawn: {fileID: 1730237104}
   goAttackParticle: {fileID: 5919025764422043900, guid: f3456f4a250f743449ba8a43585b90be, type: 3}
+  speed: 500
+--- !u!114 &57245467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57245460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b51ee8c22f76dd479655f00b7de035c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  textHp: {fileID: 1009181143}
+  imgHp: {fileID: 1089456811}
+  tagDamageObject: 
 --- !u!224 &110081199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2482090176154036788, guid: 1672650926477814fa6b622fcad333c1, type: 3}
@@ -5447,6 +5465,9 @@ GameObject:
   - component: {fileID: 1290334465}
   - component: {fileID: 1290334464}
   - component: {fileID: 1290334466}
+  - component: {fileID: 1290334467}
+  - component: {fileID: 1290334469}
+  - component: {fileID: 1290334468}
   m_Layer: 0
   m_Name: "\u9AB7\u9ACF"
   m_TagString: Untagged
@@ -5538,6 +5559,59 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1290334467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290334463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b51ee8c22f76dd479655f00b7de035c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  textHp: {fileID: 844044930}
+  imgHp: {fileID: 1154525181}
+  tagDamageObject: "\u9583\u96FB\u7403"
+--- !u!70 &1290334468
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290334463}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.02, y: 0}
+  m_Size: {x: 1.1, y: 1.6}
+  m_Direction: 0
+--- !u!50 &1290334469
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290334463}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!224 &1291302484 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6528071295943457097, guid: e814e7560b972e24cb90ce797d22e833, type: 3}
