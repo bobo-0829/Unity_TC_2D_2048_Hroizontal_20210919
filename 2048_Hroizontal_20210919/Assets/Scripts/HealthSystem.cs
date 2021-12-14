@@ -2,6 +2,10 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 血量系統
+/// 管理血量、受傷與死亡
+/// </summary>
 public class HealthSystem : MonoBehaviour
 {
     [Header("血量"), Range(0, 500)]
@@ -27,12 +31,22 @@ public class HealthSystem : MonoBehaviour
         ani = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        textHp.text = "HP " + hp;
+        imgHp.fillAmount = 1;
+    }
+
     // 碰撞事件 : 兩個碰撞器其中一個有勾選 Is Trigger
     // Enter 碰撞開始時執行此事件一次
     // collision 碰到物件的碰撞資訊
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == tagDamageObject) Hurt(10);
+        if (collision.tag == tagDamageObject)
+        {
+            //受傷(造成傷害物件 子彈系統 的 攻擊力)
+            Hurt(collision.GetComponent<Bullet>().attack);
+        }
     }
 
     ///<summary>
@@ -41,9 +55,20 @@ public class HealthSystem : MonoBehaviour
     ///<param name="damage">接受到的00傷害</param>
     public void Hurt(float damage)
     {
-        hp = damage;
-        textHp.text = "Hp" + hp;
+        if (hp <= 0) return;
+
+        hp -= damage;
+        hp = Mathf.Clamp(hp, 0, hpMax);     //夾住(hp，最小，最大)
+        textHp.text = "HP" + hp;
         imgHp.fillAmount = hp / hpMax;
         ani.SetTrigger(parameterDamage);
+        if (hp <= 0) Dead();
+    }
+    /// <summary>
+    /// 死亡
+    /// </summary>
+    private void Dead()
+    {
+        ani.SetTrigger(parameterDead);
     }
 }

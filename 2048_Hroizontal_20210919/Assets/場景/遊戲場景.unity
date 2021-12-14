@@ -408,8 +408,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc0f504348cca64dbf322ca02748d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 10
+  attack: 50
   goTarget: {fileID: 1290334463}
+  textAttack: {fileID: 1086963809}
+  delayAttack: 3.5
+  delaySendDamage: 0.5
+  parameterAttack: "\u653B\u64CA\u89F8\u767C"
+  onAttackFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1274076747}
+        m_TargetAssemblyTypeName: System2048, Assembly-CSharp
+        m_MethodName: changeToMyTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   positionSpawn: {fileID: 1730237104}
   goAttackParticle: {fileID: 5919025764422043900, guid: f3456f4a250f743449ba8a43585b90be, type: 3}
   speed: 500
@@ -429,6 +448,8 @@ MonoBehaviour:
   textHp: {fileID: 1009181143}
   imgHp: {fileID: 1089456811}
   tagDamageObject: 
+  parameterDamage: "\u53D7\u50B7\u89F8\u767C"
+  parameterDead: "\u6B7B\u4EA1\u89F8\u767C"
 --- !u!224 &110081199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2482090176154036788, guid: 1672650926477814fa6b622fcad333c1, type: 3}
@@ -5435,6 +5456,22 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   direction: 0
+  StateTurn: 0
+  onEnemyTurn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1290334470}
+        m_TargetAssemblyTypeName: AttackSystem, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1274076748
 Transform:
   m_ObjectHideFlags: 0
@@ -5465,9 +5502,10 @@ GameObject:
   - component: {fileID: 1290334465}
   - component: {fileID: 1290334464}
   - component: {fileID: 1290334466}
-  - component: {fileID: 1290334467}
   - component: {fileID: 1290334469}
   - component: {fileID: 1290334468}
+  - component: {fileID: 1290334467}
+  - component: {fileID: 1290334470}
   m_Layer: 0
   m_Name: "\u9AB7\u9ACF"
   m_TagString: Untagged
@@ -5571,10 +5609,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b51ee8c22f76dd479655f00b7de035c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 350
   textHp: {fileID: 844044930}
   imgHp: {fileID: 1154525181}
   tagDamageObject: "\u9583\u96FB\u7403"
+  parameterDamage: "\u53D7\u50B7\u89F8\u767C"
+  parameterDead: "\u6B7B\u4EA1\u89F8\u767C"
 --- !u!70 &1290334468
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5612,6 +5652,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1290334470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290334463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d239dc8361f9e45a07c23df0b16381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 10
+  goTarget: {fileID: 57245460}
+  textAttack: {fileID: 1586689208}
+  delayAttack: 2
+  delaySendDamage: 0.35
+  parameterAttack: "\u653B\u64CA\u89F8\u767C"
+  onAttackFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1274076747}
+        m_TargetAssemblyTypeName: System2048, Assembly-CSharp
+        m_MethodName: changeToMyTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1291302484 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6528071295943457097, guid: e814e7560b972e24cb90ce797d22e833, type: 3}
