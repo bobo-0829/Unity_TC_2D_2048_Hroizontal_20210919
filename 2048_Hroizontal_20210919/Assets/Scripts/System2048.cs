@@ -21,9 +21,15 @@ public class System2048 : MonoBehaviour
     public GameObject goNumberBlock;
     [Header("畫布2048")]
     public Transform traCanvas2048;
-    [Header("數字相同的事件")]
-    public UnityEvent onSameNumberCombine;
+    [Header("數字相同合併事件")]
+    public OnSameNumberCombine onSameNumberCombine;
+    [Header("敵人回合事件")]
+    public UnityEvent onEnemyTurn;
     #endregion
+
+    // 系統 序列化 : 將類別資料縣市在屬性面板
+    [System.Serializable]
+    public class OnSameNumberCombine : UnityEvent<float> { }
 
     #region 欄位:私人
     // 私人欄位顯示在屬性面板上
@@ -212,8 +218,7 @@ public class System2048 : MonoBehaviour
         #endregion
     }
 
-    [Header("敵人回合事件")]
-    public UnityEvent onEnemyTurn;
+
 
     /// <summary>
     /// 檢查並移動區塊
@@ -476,8 +481,8 @@ public class System2048 : MonoBehaviour
             //跟新子物件，名字叫做"數字"的物件
             blockCheck.goBlock.transform.Find("數字").GetComponent<Text>().text = number.ToString();
 
-            //相同數字合併事件 觸發
-            onSameNumberCombine.Invoke();
+            //相同數字合併事件 觸發(合併後的數字)
+            onSameNumberCombine.Invoke(number);
             #endregion
         }
         else
