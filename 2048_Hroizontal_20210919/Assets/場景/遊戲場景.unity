@@ -334,7 +334,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 56724077}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2543613976834456037, guid: b7d747bea3f8d6c4a97b425df551f92e, type: 3}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8300000, guid: 1a888409cbd1fcb49abd8fb4aa52ee0f, type: 3}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &56724077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b51ee8c22f76dd479655f00b7de035c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1500
+  hp: 2000
   textHp: {fileID: 1009181143}
   imgHp: {fileID: 1089456811}
   tagDamageObject: 
@@ -8445,7 +8469,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1857589392}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8642562451935108729, guid: 2d494330c563c43419eaf9d736f559dc, type: 3}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1361826092}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 1a888409cbd1fcb49abd8fb4aa52ee0f, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1857589392
 MonoBehaviour:
   m_ObjectHideFlags: 0
